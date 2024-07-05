@@ -79,11 +79,12 @@
     </nav>
     {{ end }}<!---->
 
-    {{ with $.Scratch.Get "social_list" }}
+    {{ $social_list := $.Scratch.Get "social_list" }}
+    {{ $email := .Site.Params.email }}
     <nav
       class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
     >
-      {{ range . }}<!---->
+      {{ range $social_list }}<!---->
       <a
         class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./{{ . }}.svg)"
@@ -94,7 +95,18 @@
         {{ . }}
       </a>
       {{ end }}<!---->
+      <!-- Adding email icon and link -->
+      {{ if $email }}
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./email.svg)"
+        href="mailto:{{ $email | urlize }}"
+        target="_blank"
+        rel="me"
+      >
+        email
+      </a>
+      {{ end }}
     </nav>
-    {{ end }}<!---->
   </div>
 </header>

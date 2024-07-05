@@ -1973,7 +1973,7 @@ article .highlight > div table tr td:last-of-type {
 
 @keyframes spin {
   to {
-    transform: rotate(360deg);
+    transform:none;
   }
 }
 
